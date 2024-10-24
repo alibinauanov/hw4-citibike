@@ -1,6 +1,6 @@
 "use client";
 
-import Points from './points';
+import Points from '../points';
 import XAxis from './xAxis';
 import YAxis from './yAxis';
 
