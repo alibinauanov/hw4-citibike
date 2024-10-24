@@ -12,11 +12,19 @@ function BarChart(props) {
                 xScale={xScale} 
                 yScale={yScale} 
                 height={height}
-                hoveredStation={hoveredStation}      // Pass down hoveredStation state
-                setHoveredStation={setHoveredStation} // Pass down setHoveredStation function
+                hoveredStation={hoveredStation}
+                setHoveredStation={setHoveredStation}
             />
-            <YAxis yScale={yScale} height={height} axisLable={"Bikers start from"} />
-            <XAxis xScale={xScale} height={height} width={width} />
+            <YAxis 
+                yScale={yScale} 
+                height={height} 
+                axisLabel={"Bikers start from"}  // Pass the correct label for the y-axis here
+            />
+            <XAxis 
+                xScale={xScale} 
+                height={height} 
+                width={width} 
+            />
         </g>
     );
 }

@@ -12,23 +12,33 @@ function Points(props) {
     };
 
     const handleMouseEnter = (station, event) => {
-        setHoveredStation(station);  // Set hovered station
-        setTooltipX(event.pageX);    // Set X coordinate for tooltip
-        setTooltipY(event.pageY);    // Set Y coordinate for tooltip
+        setHoveredStation(station);
+        setTooltipX(event.pageX);
+        setTooltipY(event.pageY);
     };
 
     const handleMouseOut = () => {
-        setHoveredStation(null);  // Clear hovered station
-        setTooltipX(null);        // Clear tooltip X coordinate
-        setTooltipY(null);        // Clear tooltip Y coordinate
+        setHoveredStation(null);
+        setTooltipX(null);
+        setTooltipY(null);
     };
 
     if (data) {
         return (
             <g>
+                {/* Yellow background when hovering */}
                 {hoveredStation && (
-                    <rect x={0} y={0} width={width} height={height} fill="yellow" />
+                    <rect 
+                        x={0} 
+                        y={0} 
+                        width={width} 
+                        height={height} 
+                        fill="yellow" 
+                        opacity={0.3}  // Semi-transparent yellow background
+                    />
                 )}
+                
+                {/* Points */}
                 {data.map((d, i) => (
                     <circle
                         key={i}
@@ -41,18 +51,6 @@ function Points(props) {
                         onMouseOut={handleMouseOut}
                     />
                 ))}
-                {hoveredStation && data.map((d, i) =>
-                    d.station === hoveredStation ? (
-                        <circle
-                            key={`selected-${i}`}
-                            cx={xScale(d.start)}
-                            cy={yScale(d.end)}
-                            r={10}
-                            fill="red"
-                            stroke="black"
-                        />
-                    ) : null
-                )}
             </g>
         );
     } else {
